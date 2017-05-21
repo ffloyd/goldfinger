@@ -4,6 +4,14 @@ class Loan < ApplicationRecord
   belongs_to :company
   has_many :payments
 
+  validates :amount_cents, :months, :period,
+            presence: true,
+            numericality: { only_integer: true, greater_than: 0 }
+
+  validates :rate, :extra_rate,
+            presence: true,
+            numericality: { greater_than: 0 }
+
   def self.realistic_yearly_yield
     sum(&:yearly_yield) / count
   rescue
