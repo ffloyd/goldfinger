@@ -1,0 +1,9 @@
+version: '2'
+services:
+  goldfinger:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: goldfinger:dev
+    ports:
+      - "3000:3000"
