@@ -1,0 +1,8 @@
+<h1>Our Small Calculator</h1>
+<p>
+  Currently we have <%= pluralize(Company.count, 'company') %>. <br>
+  You can deposit some money, giving them to our companies and earn some after 6 months period. <br>
+  Current Optimistic Yield is <%= percent_formatter(OPTIMISTIC_YIELD) %>. <br>
+  Current Realistic Yield is <%= percent_formatter(@realistic_yield) %>. <br>
+  How much do you want to give each company? (100000 means you'll give 300000 in total).
+</p>

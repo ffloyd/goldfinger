@@ -4,8 +4,14 @@ class Loan < ApplicationRecord
   belongs_to :company
   has_many :payments
 
+  def self.optimistic_yearly_yield
+    sum(&:yearly_yield) / count
+  rescue
+    OPTIMISTIC_YIELD
+  end
+
   def amount
-    amount_cents.to_f / 100
+    @amount = amount_cents.to_f / 100
   end
 
   def monthly_loan_debt
@@ -27,6 +33,7 @@ class Loan < ApplicationRecord
   end
 
   def overall_debt
+    # TODO: How to include extra payments?
     rounded(monthly_debt_total * months)
   end
 
