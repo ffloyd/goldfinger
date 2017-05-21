@@ -20,7 +20,19 @@ class Loan < ApplicationRecord
     rounded(monthly_loan_debt + monthly_percents_debt)
   end
 
-  def monthly_payment
+  def overall_debt
     rounded(monthly_debt_total * months)
+  end
+
+  def paid_loan
+    rounded(amount * rate / 12 * months)
+  end
+
+  def paid_percents
+    rounded(monthly_loan_debt * months)
+  end
+
+  def yearly_yield
+    rounded(paid_loan / paid_percents * 12 / months)
   end
 end
