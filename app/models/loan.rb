@@ -12,12 +12,18 @@ class Loan < ApplicationRecord
     rounded(amount / months)
   end
 
-  def monthly_percents_debt
-    rounded(amount * rate / 12)
+  def monthly_percents_debt(extra = false)
+    chosen_rate = extra ? extra_rate : rate
+
+    rounded(amount * chosen_rate / 12)
   end
 
-  def monthly_debt_total
-    rounded(monthly_loan_debt + monthly_percents_debt)
+  def monthly_debt_total(extra = false)
+    rounded(monthly_loan_debt + monthly_percents_debt(extra))
+  end
+
+  def monthly_extra_total
+    monthly_debt_total(extra = true)
   end
 
   def overall_debt
@@ -25,7 +31,10 @@ class Loan < ApplicationRecord
   end
 
   def paid_percents
-    rounded(amount * rate / 12 * payments.size)
+    normal_percents = amount * rate / 12 * payments.where(extra: false).size
+    extra_percents  = amount * extra_rate / 12 * payments.where(extra: true).size
+
+    rounded(normal_percents + extra_percents)
   end
 
   def paid_loan
