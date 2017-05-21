@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521091352) do
+ActiveRecord::Schema.define(version: 20170521142038) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170521091352) do
     t.decimal "extra_rate", precision: 3, scale: 2, default: "0.5", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "payments_count", default: 0
     t.index ["company_id"], name: "index_loans_on_company_id"
   end
 
