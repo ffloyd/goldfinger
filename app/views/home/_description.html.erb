@@ -1,0 +1,16 @@
+<p>
+  Currently we have <b><%= pluralize(@companies_count, 'company') %></b>.
+</p>
+
+<p>
+  You can deposit some money, giving them to our companies and earn some after <b>6 months period</b>.
+</p>
+
+<p>
+  Current Optimistic Yield is <b><%= percent_formatter(OPTIMISTIC_YIELD) %></b>. <br>
+  Current Realistic Yield is <b><%= percent_formatter(@realistic_yield_percent) %>.</b> <br>
+</p>
+
+<p>
+  How much do you want to give each company? (100000 means you'll give 300000 in total).
+</p>

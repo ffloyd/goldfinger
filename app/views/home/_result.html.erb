@@ -1,0 +1,11 @@
+<% if @optimistic_yield %>
+  <p>
+    So, if you'll give us <b><%= number_to_currency @amount %></b> for each of <b><%= pluralize(@companies_count, 'company') %></b>, you'll get in return:
+  </p>
+  <p>
+    Realistic Scenario:  <b><%= number_to_currency @realistic_yield %></b>.
+  </p>
+  <p>
+    Optimistic Scenario: <b><%= number_to_currency @optimistic_yield %></b>
+  </p>
+<% end %>

@@ -1,0 +1,6 @@
+<p>
+  <%= form_tag root_path do |f| %>
+    <%= number_field_tag 'amount', params[:amount]  -%>
+    <%= submit_tag '"Shut up and take my money!"' -%>
+  <%- end %>
+</p>

@@ -4,7 +4,7 @@ class Loan < ApplicationRecord
   belongs_to :company
   has_many :payments
 
-  def self.optimistic_yearly_yield
+  def self.realistic_yearly_yield
     sum(&:yearly_yield) / count
   rescue
     OPTIMISTIC_YIELD
@@ -38,6 +38,7 @@ class Loan < ApplicationRecord
   end
 
   def paid_percents
+    # TODO: Refactor It
     normal_percents = amount * rate / 12 * payments.where(extra: false).size
     extra_percents  = amount * extra_rate / 12 * payments.where(extra: true).size
 
