@@ -3,6 +3,6 @@ module Roundable
 
   private
   def rounded(some_amount)
-    some_amount.to_f.round(2)
+    BigDecimal.new(some_amount, 4).round(2)
   end
 end

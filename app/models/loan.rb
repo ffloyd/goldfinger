@@ -1,5 +1,6 @@
 class Loan < ApplicationRecord
   include Roundable
+  include WithAmount
 
   belongs_to :company
   has_many :payments
@@ -16,10 +17,6 @@ class Loan < ApplicationRecord
     sum(&:yearly_yield) / count
   rescue
     OPTIMISTIC_YIELD
-  end
-
-  def amount
-    @amount = amount_cents.to_f / 100
   end
 
   def monthly_loan_debt

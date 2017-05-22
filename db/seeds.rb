@@ -42,3 +42,18 @@ end
   company_three_loan.payments.create!(amount_cents: company_three_loan.monthly_extra_total * 100,
                                     extra: true)
 end
+
+# New Company
+company_four = Company.create!(name: 'Company Four')
+company_four_loan = Loan.create!(company: company_four,
+                                amount_cents: 1_000_000 * 100,
+                                months: 6,
+                                period: 1)
+4.times do |n|
+  company_four_loan.payments.create!(amount_cents: company_four_loan.monthly_debt_total * 100)
+end
+
+2.times do |n|
+  company_four_loan.payments.create!(amount_cents: company_four_loan.monthly_extra_total * 100,
+                                    extra: true)
+end
