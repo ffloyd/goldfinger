@@ -7,6 +7,11 @@
 import Vue from 'vue/dist/vue.esm'
 import App from './app.vue'
 
+// Вкратце опиши в каких случаях предпочтешь
+// 1) ES6
+// 2) ES5
+// 3) CoffeeScript
+// 4) мб. про еще что-то имеет смысл упомянуть (TypeScript, например)
 document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(document.createElement('hello'))
   const app = new Vue({

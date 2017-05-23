@@ -15,10 +15,14 @@ class Loan < ApplicationRecord
 
   def self.realistic_yearly_yield
     sum(&:yearly_yield) / count
-  rescue
+  rescue # используешь rescue для бизнес логики? Почему это здесь оправдано?
     OPTIMISTIC_YIELD
   end
 
+  # Зачем везде rounded?
+  # Всегда идет округдение до 2-х знаков. Если в промежуточных вычислениях важна
+  # большая точноcть - она будет потеряна. А если это так - то в чем смысл перехода
+  # c float'ов на BigDecimal?
   def monthly_loan_debt
     rounded(amount / months)
   end
@@ -34,6 +38,7 @@ class Loan < ApplicationRecord
   end
 
   def monthly_extra_total
+    # зачем `(extra = )`?
     monthly_debt_total(extra = true)
   end
 
@@ -44,6 +49,7 @@ class Loan < ApplicationRecord
 
   def paid_percents
     # TODO: Refactor It
+    # Почему `.size`?
     normal_percents = amount * rate / 12 * payments.where(extra: false).size
     extra_percents  = amount * extra_rate / 12 * payments.where(extra: true).size
 

@@ -1,3 +1,4 @@
+# Почему не хавтило просто docker'а? 
 version: '2'
 services:
   goldfinger:

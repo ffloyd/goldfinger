@@ -1,3 +1,6 @@
+# Про какие еще варианты оформления seeds.rb можешь рассказать?
+# В какой ситуации какой лучше подойдет и почему?
+
 # Normal Company
 company_one = Company.create!(name: 'Company One')
 company_one_loan = Loan.create!(company: company_one,

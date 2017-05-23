@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20170521145216) do
     t.integer "amount_cents", default: 0, null: false
     t.integer "months", default: 1, null: false
     t.integer "period", default: 1, null: false
+    # 1. почему decimal а не integer?
+    # 2. `precision: 3, scale: 2` - а если понадобятся десятые процентов? Сотые? А если 2123%?
     t.decimal "rate", precision: 3, scale: 2, default: "0.3", null: false
     t.decimal "extra_rate", precision: 3, scale: 2, default: "0.5", null: false
     t.datetime "created_at", null: false

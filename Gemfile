@@ -42,3 +42,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Пользуешься ли ты rubocop'ом? Другими линтерами для других языков?
+# Если да, то почему не включил rubocop в этом проекте?
